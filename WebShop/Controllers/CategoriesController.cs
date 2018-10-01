@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -123,6 +124,41 @@ namespace WebShop.Controllers
             _context.Categories.Remove(category);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ContentResult GetParentCategories()
+        {
+            var categories =
+                _context.Categories
+                .Where(c => c.ParentId == null)
+                .Select(c=>new
+                {
+                    id=c.Id,
+                    parent = "#",
+                    text = c.Name,
+                    children = c.Children.Count()!=0 
+                }).ToList();
+            string json = JsonConvert.SerializeObject(categories);
+
+            return Content(json, "application/json");
+        }
+        [HttpGet]
+        public ContentResult GetChildrenCategories(int id)
+        {
+            var categories =
+                _context.Categories
+                .Where(c => c.ParentId == id)
+                .Select(c => new
+                {
+                    id = c.Id,
+                    parent = id,
+                    text = c.Name,
+                    children = c.Children.Count() != 0
+                }).ToList();
+            string json = JsonConvert.SerializeObject(categories);
+
+            return Content(json, "application/json");
         }
 
         //protected override void Dispose(bool disposing)

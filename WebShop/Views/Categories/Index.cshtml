@@ -32,8 +32,59 @@
     }
 
 </table>
+
+@*<div id="container">
+        <ul>
+            <li>
+                Root node
+                <ul>
+                    <li>Child node 1</li>
+                    <li>Child node 2</li>
+                </ul>
+            </li>
+        </ul>
+    </div>*@
+
+@*<div id="categorySimple">
+
+    </div>*@
+@*<div id="introspection_tree">
+
+    </div>*@
+
+@*<div id="using_json_2"></div>*@
+<div id="tree"></div>
+
+@section styles {
+    <link href="~/Content/themes/default/style.css" rel="stylesheet" />
+}
+
+
 @section scripts {
     <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Scripts/jstree.js"></script>
+    <script>
+        $(function () {
+            $('#tree').jstree({
+                'core': {
+                    'data': {
+                        'url': function (node) {
+                            return node.id === '#' ?
+                                '/Categories/GetParentCategories' :
+                                '/Categories/GetChildrenCategories';
+                        },
+                        'data': function (node) {
+                            return { 'id': node.id };
+                        }
+                    }
+                }
+            });
+
+        });
+
+    </script>
+
+
     <script>
         window.onload = function () {
             jQueryRelease();
