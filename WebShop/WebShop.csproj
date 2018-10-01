@@ -286,6 +286,10 @@
     <Compile Include="Migrations\201809261554160_Filters table added..Designer.cs">
       <DependentUpon>201809261554160_Filters table added..cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810011537372_Midified tblCaregories.cs" />
+    <Compile Include="Migrations\201810011537372_Midified tblCaregories.Designer.cs">
+      <DependentUpon>201810011537372_Midified tblCaregories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Category.cs" />
@@ -323,6 +327,16 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\ProductImages\_default.png" />
+    <Content Include="Content\themes\default-dark\32px.png" />
+    <Content Include="Content\themes\default-dark\40px.png" />
+    <Content Include="Content\themes\default-dark\style.css" />
+    <Content Include="Content\themes\default-dark\style.min.css" />
+    <Content Include="Content\themes\default-dark\throbber.gif" />
+    <Content Include="Content\themes\default\32px.png" />
+    <Content Include="Content\themes\default\40px.png" />
+    <Content Include="Content\themes\default\style.css" />
+    <Content Include="Content\themes\default\style.min.css" />
+    <Content Include="Content\themes\default\throbber.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -343,6 +357,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\themes\default\Thumbs.db" />
+    <Content Include="Content\themes\default-dark\Thumbs.db" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\cropper\cropper.js" />
     <Content Include="Scripts\cropper\cropper.min.js" />
@@ -481,6 +497,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jstree.js" />
+    <Content Include="Scripts\jstree.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\product\cropper\work-cropper.js" />
     <Content Include="UploadedFiles\User\Images\300_300_default.png" />
@@ -596,6 +614,9 @@
     <EmbeddedResource Include="Migrations\201809261554160_Filters table added..resx">
       <DependentUpon>201809261554160_Filters table added..cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011537372_Midified tblCaregories.resx">
+      <DependentUpon>201810011537372_Midified tblCaregories.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -611,7 +632,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57685</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
