@@ -64,6 +64,22 @@ namespace WebShop.Controllers
             return View(category);
         }
 
+       
+        [HttpPost]
+        public ContentResult CreateCategory(string name, int? parentId)
+        {
+            var category = new Category
+            {
+                ParentId = parentId,
+                Name = name
+            };
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+
+            string json = JsonConvert.SerializeObject(category.Id);
+
+            return Content(json, "application/json");
+        }
         // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
