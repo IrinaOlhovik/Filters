@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebShop.Models.Entities;
+using WebShop.Models.Entities.Views;
 
 namespace WebShop.Models
 {
@@ -44,6 +45,7 @@ namespace WebShop.Models
         public DbSet<FilterName> FiltersName { get; set; }
         public DbSet<FilterValue> FiltersValue { get; set; }
         public DbSet<FilterNameGroup> FilterNameGroups { get; set; }
+        public DbSet<VFilterNameGroup> VFilterNameGroups { get; set; }
         public DbSet<Filter> Filters { get; set; }
         public DbSet<FilterCategory> FilterCategories { get; set; }
 

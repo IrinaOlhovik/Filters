@@ -31,17 +31,17 @@ namespace WebShop
             app.UseAutofacMvc();
 
             ConfigureAuth(app);
-            GlobalConfiguration.Configuration
-                .UseSqlServerStorage("DefaultConnection");
+            //GlobalConfiguration.Configuration
+            //    .UseSqlServerStorage("DefaultConnection");
 
-            app.UseHangfireDashboard("/myJobDashbord", new DashboardOptions()
-            {
-                Authorization = new[] { new HangfireAuthorizationFilter()}
-            });
-            RecurringJob.AddOrUpdate(
-                () => ProductsController.ClearImages(), Cron.Minutely()
-            );
-            app.UseHangfireServer();
+            //app.UseHangfireDashboard("/myJobDashbord", new DashboardOptions()
+            //{
+            //    Authorization = new[] { new HangfireAuthorizationFilter()}
+            //});
+            //RecurringJob.AddOrUpdate(
+            //    () => ProductsController.ClearImages(), Cron.Minutely()
+            //);
+            //app.UseHangfireServer();
         }
     }
 }

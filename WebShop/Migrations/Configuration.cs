@@ -6,6 +6,8 @@ namespace WebShop.Migrations
     using System.Linq;
     using WebShop.Models.Entities;
     using System.Collections.Generic;
+    using System.Reflection;
+    using System.IO;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WebShop.Models.ApplicationDbContext>
     {
@@ -17,6 +19,14 @@ namespace WebShop.Migrations
 
         protected override void Seed(WebShop.Models.ApplicationDbContext context)
         {
+
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+
+            string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlView\\vFilterNameGroups.sql";
+            context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir));
+
             #region InitFilterName
             context.FiltersName.AddOrUpdate(
                 h => h.Id,

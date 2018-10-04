@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201810011537372_Midified tblCaregories.Designer.cs">
       <DependentUpon>201810011537372_Midified tblCaregories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810041736420_Add view vFilterNameGroups.cs" />
+    <Compile Include="Migrations\201810041736420_Add view vFilterNameGroups.Designer.cs">
+      <DependentUpon>201810041736420_Add view vFilterNameGroups.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Category.cs" />
@@ -303,6 +307,7 @@
     <Compile Include="Models\Entities\ProductMappingImages.cs" />
     <Compile Include="Models\Entities\ProductMetaData.cs" />
     <Compile Include="Models\Entities\UserProfile.cs" />
+    <Compile Include="Models\Entities\Views\VFilterNameGroup.cs" />
     <Compile Include="Models\FiltersViewModels.cs" />
     <Compile Include="Models\HealperModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -310,6 +315,7 @@
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FValueViewModels.cs" />
     <Compile Include="ViewModels\ProductIndexViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
   </ItemGroup>
@@ -343,6 +349,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Product\Description\default.jpg" />
+    <Content Include="Migrations\SqlView\vFilterNameGroups.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-filestyle.js" />
@@ -616,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810011537372_Midified tblCaregories.resx">
       <DependentUpon>201810011537372_Midified tblCaregories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810041736420_Add view vFilterNameGroups.resx">
+      <DependentUpon>201810041736420_Add view vFilterNameGroups.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
