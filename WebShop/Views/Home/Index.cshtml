@@ -1,34 +1,90 @@
-﻿@model List<WebShop.ViewModels.FNameViewModel>
+﻿@model WebShop.ViewModels.HomeViewModel
 @{
     ViewBag.Title = "Home Page";
     string url = HttpContext.Current.Request.Url.ToString();
 }
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <p></p>
+    <div></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="list">
+                @foreach (var name in Model.Filters)
+                {
+                    <ul>
+                        @name.Name
+                        @foreach (var value in name.Children)
+                        {
+                            <li>
+                                <input type="checkbox" value="@value.Id" id="fvalues" name="fvalues" class="checkFilters" />
+                                @value.Name
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+            <div class="col-md-8">
+                <table id="listProducts">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>
+                                    @product.Id
+                                </td>
+                                <td>
+                                    @product.Name
+                                </td>
+                                <td>
+                                    @product.Price
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Set Filters" />
+                </div>
+            </div>
+            @*<a href="#" id="setFilters" class="btn btn-success">Set filters</a>*@
+        </div>
+    </div>
+}
+@section scripts{
+    <script>
+        $("#setFilters").on('click', function () {
+            var i, j;
+            idFilter = [];
+            j = 0;
+            var list = $("#list .checkFilters");
+            list.each(function (i, elem) {
+                if ($(this).is(":checked")) {
+                    idFilter[j] = $(this).attr("value");
+                    j++;
+                }
+            });
+            console.log(idFilter);
+            $.get('/Home/GetProducts',
+                {
+                    'idFilters': idFilter
+                })
+                .done(function (d) {
+                    console.log(d);
+                })
+                .fail(function () {
 
-<div class="row">
-    <div class="col-md-4">
-        @foreach (var name in Model)
-        {
-        <ul>
-            @name.Name
-            @foreach (var value in name.Children)
-            {
-                <li>
-                    <input type="checkbox" value="@value.Id" id="fvalues" name="fvalues" />
-                    @value.Name
-                </li>
-            }
-        </ul>
-        }
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+                });
+        });
+    </script>
+}
